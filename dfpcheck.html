@@ -30,6 +30,7 @@
 			var adFrameContent = (adFrame.contentWindow || adFrame.contentDocument);
 			if(adFrameContent.document) adFrameDoc = adFrameContent.document;
 			var interstitialDiv = adFrameDoc.getElementById('myinterstitialbody');
+			adFrameContent.interstitial.init();
 			console.log(interstitialDiv);
 		});
 		function closeFrame(){

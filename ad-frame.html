@@ -1,0 +1,61 @@
+<html>
+<head>
+
+</head>
+<body>
+	Out of page ads :
+	<button id="showad">Show Ad</button>	
+	<div id='myinterstitialbody'></div>
+	<script>
+		var inter;
+		var interstitial = {
+	    	init : function(){
+	        	console.log("requesting Header");
+	        	parent.closeFrame();
+	         	interstitial.loadGPT();
+		    	interstitial.callHeaderWithTimer();
+	    	},
+	    	//Loading with timer as GPT.js is sometimes not completely loaded
+	    	callHeaderWithTimer : function(){
+	    		if(typeof googletag !=='undefined'){
+		    		console.log('GPT defined');
+	    			if(typeof inter !=='undefined'){
+	    				console.log("timer stopped");
+	    				clearInterval(inter);
+	    			}
+	    			interstitial.callHeader();
+				}else{
+					inter = setInterval(interstitial.init,3000);
+				}
+	    	},
+		    loadGPT : function(){
+		    	console.log("calling gpt");
+		    	var useSSL = 'https:' == document.location.protocol;
+		    	var src = (useSSL ? 'https:' : 'http:') +
+		        '//www.googletagservices.com/tag/js/gpt.js';
+		    	document.write('<scr' + 'ipt src="' + src + '"></scr' + 'ipt>');
+		    },
+		    callHeader : function(){
+		    	googletag.cmd.push(function() {
+		     		googletag.defineOutOfPageSlot('/81214979/mSite_Interstitial', 'myinterstitialbody').setTargeting('City', []).addService(googletag.pubads());
+		        	googletag.pubads().enableSingleRequest();
+		        	googletag.pubads().collapseEmptyDivs();
+		        	googletag.pubads().enableSyncRendering();
+		        	googletag.enableServices();
+		     });
+		     	console.log("Header call completed");
+		     	interstitial.callBody();
+		    },
+		    callBody : function(){
+		    	console.log("body inititated");
+		        googletag.cmd.push(function() { googletag.display('myinterstitialbody'); });
+		        console.log("body called");
+		        return;
+		    }
+		};
+	var el = document.getElementById('showad');
+	console.log(el);
+	el.addEventListener('click',interstitial.init);
+	</script>	
+</body>
+</html>

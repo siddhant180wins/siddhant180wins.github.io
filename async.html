@@ -1,0 +1,62 @@
+<html>
+	<head>
+		<title>DFP Out of PAGE POC</title>
+	</head>
+	<body>
+		Out of page ads :
+		<button id="showad">Show Ad</button>	
+		<div id='myinterstitialbody'></div>
+	<script>
+	var inter;
+	var interstitial = {
+    	init : function(){
+        	console.log("requesting Header");
+         	interstitial.loadGPT();
+	    	interstitial.callHeaderWithTimer();
+    	},
+    	//Loading with timer as GPT.js is sometimes not completely loaded
+    	callHeaderWithTimer : function(){
+    		if(typeof googletag !=='undefined'){
+	    		console.log('GPT defined');
+    			if(typeof inter !=='undefined'){
+    				console.log("timer stopped");
+    				clearInterval(inter);
+    			}
+    			interstitial.callHeader();
+			}else{
+				inter = setInterval(interstitial.init,3000);
+			}
+    	},
+	    loadGPT : function(){
+	    	console.log("calling gpt");
+	    	var gads = document.createElement("script");
+	      	gads.async = true;
+	      	gads.type = "text/javascript";
+	      	var useSSL = "https:" == document.location.protocol;
+	      	gads.src = (useSSL ? "https:" : "http:") + "//www.googletagservices.com/tag/js/gpt.js";
+	      	var node = document.getElementsByTagName("script")[0];
+	      	node.parentNode.insertBefore(gads, node);
+	    },
+	    callHeader : function(){
+	    	googletag.cmd.push(function() {
+	     		googletag.defineSlot('/81214979/DFP_ASYNC_TRIAL', [320, 480], 'myinterstitialbody').addService(googletag.pubads());
+    			googletag.pubads().enableSingleRequest();
+    			googletag.pubads().collapseEmptyDivs();
+    			googletag.enableServices();
+	     });
+	     	console.log("Header call completed");
+	     	interstitial.callBody();
+	    },
+	    callBody : function(){
+	    	console.log("body inititated");
+	        googletag.cmd.push(function() { googletag.display('myinterstitialbody'); });
+	        console.log("body called");
+	        return;
+	    }
+};
+
+	var el = document.getElementById('showad');
+	el.addEventListener('click',interstitial.init);
+	</script>
+</body>
+</html>

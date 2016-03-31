@@ -10,6 +10,7 @@
 		var interstitial = {
 	    	init : function(){
 	        	console.log("requesting Header");
+	        	parent.closeFrame();
 	         	interstitial.loadGPT();
 		    	interstitial.callHeaderWithTimer();
 	    	},

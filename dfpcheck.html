@@ -28,7 +28,9 @@
 		testBtn.addEventListener('click',function(){
 			var adFrame = document.getElementById('ad-frame');
 			var adFrameContent = (adFrame.contentWindow || adFrame.contentDocument);
-			console.log(adFrame.contentWindow);
+			if(adFrameContent.document) adFrameDoc = adFrameContent.document;
+			var interstitialDiv = adFrameDoc.getElementById('myinterstitialbody');
+			console.log(interstitialDiv);
 		});
 		function closeFrame(){
 			var adFrame = document.getElementById('ad-frame');
@@ -38,7 +40,7 @@
 			//console.log(adFrame);
 				//var adFrameDoc;
 			//console.log(adFrameContent);
-			//if(adFrameContent.document) adFrameDoc = adFrameContent.document;
+			
 			//var interstitialDiv = adFrameDoc.getElementById('myinterstitialbody');
 			//console.log(interstitialDiv);
 	</script>

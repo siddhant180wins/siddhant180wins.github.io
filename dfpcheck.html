@@ -8,7 +8,7 @@
 		<button id='test-btn'>Test</button>
 		<script>
 		</script>
-		<iframe src='ad-frame.html' id='ad-frame'></iframe>
+		<iframe src='ad-frame.html' id='ad-frame' style="display:none;width:100%;height:100%;"></iframe>
 	Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum 
 	Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum 
 	Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum 
@@ -25,13 +25,14 @@
 	Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum 
 	<script>
 		var testBtn = document.getElementById('test-btn');
+		var adFrame = document.getElementById('ad-frame');
+		var adFrameContent = (adFrame.contentWindow || adFrame.contentDocument);
+		if(adFrameContent.document) adFrameDoc = adFrameContent.document;
+		var interstitialDiv = adFrameDoc.getElementById('myinterstitialbody');
 		testBtn.addEventListener('click',function(){
-			var adFrame = document.getElementById('ad-frame');
-			var adFrameContent = (adFrame.contentWindow || adFrame.contentDocument);
-			if(adFrameContent.document) adFrameDoc = adFrameContent.document;
-			var interstitialDiv = adFrameDoc.getElementById('myinterstitialbody');
 			adFrameContent.interstitial.init();
-			console.log(interstitialDiv);
+			adFrame.style.visibility='visible';
+			adFrame.style.display='block';
 		});
 		function closeFrame(){
 			var adFrame = document.getElementById('ad-frame');

@@ -1,7 +1,8 @@
 <html>
 	<body>
 		<script>
-			window.addEventListener('message',listenMsg,false);
+			console.log('listener');
+			window.addEventListener("message",listenMsg,false);
 			function listenMsg(event){
 				console.log("Msg"+event.data);
 			}

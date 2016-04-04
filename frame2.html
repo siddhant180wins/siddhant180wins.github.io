@@ -2,7 +2,7 @@
 	<body>
 		<script>
 			console.log('listener');
-			window.addEventListener("message",listenMsg,false);
+			parent.window.addEventListener("message",listenMsg,false);
 			function listenMsg(event){
 				console.log("Msg"+event.data);
 			}

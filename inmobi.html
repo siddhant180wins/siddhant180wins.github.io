@@ -1,0 +1,39 @@
+<html>
+<meta name="viewport" content="width=device-width; initial-scale=1.0" />
+<style>
+#overlay{
+ z-index:99999;
+ position:absolute;
+width:100%;
+height:100%;
+
+}
+#my-ad-slot{
+width:100%;
+height:100%;
+}
+body{
+width:100%;
+height:100%;
+text-align:center;
+}
+</style>
+<body>
+  <div id="overlay">
+      <div id="my-ad-slot">
+<script type="text/javascript">
+    var inmobi_conf = {
+        siteid: "3a6e385c66bf4039aee35df63709f38b",
+        slot: "14",
+        adtype: "int"
+    };
+</script>
+<script type="text/javascript" src="%%VIEW_URL_UNESC%%http://cf.cdn.inmobi.com/ad/inmobi.js"></script>
+<script type="text/javascript">
+//parent.window.postMessage('success','*');
+_inmobi.addEventListener("close", function(event) { 
+		  	//	parent.closeFrame();
+		  		console.log('clicked');
+		   });</script>
+</body>
+</html>

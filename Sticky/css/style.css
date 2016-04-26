@@ -2,16 +2,20 @@
 	position:relative;
 	width:60%;
 	background-color: yellow;
+	float:left;
+	/* height:100%; */
 }
 #left-container{
 	position:relative;
 	float: left;
 	width:20%;
 	background-color: blue;
+	height:100%;
 }
 #right-container{
 	position:relative;
-	float:right;
+	float:left;
 	width:20%;
 	background-color: red;
+	height:100%;
 }

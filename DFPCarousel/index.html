@@ -57,20 +57,20 @@
                  var googletag = googletag || {};
     		    googletag.cmd = googletag.cmd || [];
                  googletag.cmd.push(function() {
-                    var fu1 = googletag.defineSlot('/81214979/Desktop_HP_Carousel','fluid','fluid-div-1').addService(googletag.pubads());
-                    var fu2 = googletag.defineSlot('/81214979/Desktop_HP_300X250', [300, 250],'fluid-div-2').addService(googletag.pubads());
+                    var fu1 = googletag.defineSlot('/81214979/Desktop_HP_Carousel_1','fluid','fluid-div-1').addService(googletag.pubads());
+var fu2 = googletag.defineSlot('/81214979/Desktop_HP_Carousel','fluid','fluid-div-2').addService(googletag.pubads());
                     googletag.pubads().enableSingleRequest();
                     googletag.pubads().collapseEmptyDivs();
                     googletag.enableServices();
                     googletag.pubads().addEventListener('slotRenderEnded', function(event){
-                    	index = 1;
+                    	console.log(event.slot);
 				  if (event.slot === fu1 ) {
+				  	console.log("1 rendered");
 				    	var fd1= document.getElementById('fluid-div-1');
 				    	if(fd1.style.display==='none'){console.log("disp none 1");}else{
 				    		console.log("adding 1");
 				    		//alert("removing" + fd1.getAttribute('data-slick-index'));
 				       jQuery('.myCarousel').slick('slickAdd',fd1,true);
-				       index++;
 				    	}
 				  }
 				  if (event.slot === fu2 ) {
@@ -78,7 +78,6 @@
 				    	var fd2= document.getElementById('fluid-div-2');
 				    	if(fd2.style.display==='none'){console.log("disp none 2");}else{
 				    		console.log("adding 2");
-				    		console.log(index);
 				       jQuery('.myCarousel').slick('slickAdd',fd2,true);
 				    	}
 				  }

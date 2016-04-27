@@ -58,13 +58,13 @@
                     googletag.pubads().collapseEmptyDivs();
                     googletag.enableServices();
                     googletag.pubads().addEventListener('slotRenderEnded', function(event){
-                    	index = 0;
+                    	index = 1;
 				  if (event.slot === fu1 ) {
 				    	var fd1= document.getElementById('fluid-div-1');
 				    	if(fd1.style.display==='none'){console.log("disp none 1");}else{
 				    		console.log("adding 1");
 				    		//alert("removing" + fd1.getAttribute('data-slick-index'));
-				       jQuery('.myCarousel').slick('slickAdd',fd1,index);
+				       jQuery('.myCarousel').slick('slickAdd',fd1,index,1);
 				       index++;
 				    	}
 				  }
@@ -74,7 +74,7 @@
 				    	if(fd2.style.display==='none'){console.log("disp none 2");}else{
 				    		console.log("adding 2");
 				    		console.log(index);
-				       jQuery('.myCarousel').slick('slickAdd',fd2,index);
+				       jQuery('.myCarousel').slick('slickAdd',fd2,index,1);
 				    	}
 				  }
                     });

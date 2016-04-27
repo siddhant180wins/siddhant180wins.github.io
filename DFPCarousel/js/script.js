@@ -1,12 +1,13 @@
 (function() {
+    var googletag = googletag || {};
+    googletag.cmd = googletag.cmd || [];
     var dfpRequests = function() {
-        var googletag = googletag || {};
-        googletag.cmd = googletag.cmd || [];
+
         var dfp = {
             init: function() {
-                dfp.loadgpt();
-                dfp.loadHeader();
-                dfp.displayBody();
+                this.loadgpt();
+                this.loadHeader();
+                this.displayBody();
             },
             loadgpt: function() {
                 var gads = document.createElement('script');

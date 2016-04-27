@@ -1,11 +1,13 @@
 (function() {
-    var googletag = googletag || {};
-    googletag.cmd = googletag.cmd || [];
-    var dfpRequests = function() {
 
+    var dfpRequests = function() {
+        var googletag = googletag || {};
+        googletag.cmd = googletag.cmd || [];
         var dfp = {
             init: function() {
+
                 this.loadgpt();
+
                 this.loadHeader();
                 this.displayBody();
             },
@@ -21,7 +23,10 @@
             },
             loadHeader: function() {
                 googletag.cmd.push(function() {
-                    googletag.defineSlot('/81214979/Desktop_HP_Carousel ', 'fluid', 'fluid-div-1').addService(googletag.pubads());
+                    googletag.defineSlot('/81214979/Desktop_SnB_160X600', [
+                        [160, 600],
+                        [180, 150]
+                    ], 'fluid-div-1').addService(googletag.pubads());
                     googletag.pubads().enableSingleRequest();
                     googletag.pubads().collapseEmptyDivs();
                     googletag.enableServices();

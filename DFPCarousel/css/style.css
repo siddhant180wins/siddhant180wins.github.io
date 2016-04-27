@@ -1,0 +1,10 @@
+.myCarousel{
+	position:relative;
+	left:30%;
+}
+.myCarousel div{
+	background-color: white;
+	text-align: center;
+	font-size: 40px;
+	border:solid 1px black;
+}

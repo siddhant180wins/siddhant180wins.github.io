@@ -16,6 +16,7 @@ function adBlockDetected() {
 if (typeof fuckAdBlock === 'undefined') {
     adBlockDetected();
 } else {
+    console.log("here");
     fuckAdBlock.onDetected(adBlockDetected);
     fuckAdBlock.onNotDetected(adBlockNotDetected);
     // and|or

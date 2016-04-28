@@ -19,15 +19,17 @@ if (typeof fuckAdBlock === 'undefined') {
     console.log("here");
     fuckAdBlock.onDetected(adBlockDetected);
     fuckAdBlock.onNotDetected(adBlockNotDetected);
-    // and|or
-    fuckAdBlock.on(true, adBlockDetected);
-    fuckAdBlock.on(false, adBlockNotDetected);
-    // and|or
-    fuckAdBlock.on(true, adBlockDetected).onNotDetected(adBlockNotDetected);
+    // // and|or
+    // fuckAdBlock.on(true, adBlockDetected);
+    // fuckAdBlock.on(false, adBlockNotDetected);
+    // // and|or
+    //fuckAdBlock.on(true, adBlockDetected).onNotDetected(adBlockNotDetected);
 }
 
 // Change the options
-fuckAdBlock.setOption('checkOnLoad', false);
+fuckAdBlock.setOption({
+    debug: true
+});
 // and|or
 fuckAdBlock.setOption({
     debug: true,
